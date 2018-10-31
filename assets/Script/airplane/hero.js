@@ -31,6 +31,8 @@ cc.Class({
         this.node.on(cc.Node.EventType.TOUCH_MOVE, this.toucheMove, this);
         this.node.on(cc.Node.EventType.TOUCH_END, this.toucheEnd, this);
         this.node.on(cc.Node.EventType.TOUCH_CANCEL, this.toucheCancel, this);
+
+        //this.launchBullet();
     },
 
     toucheStart(event){
@@ -59,7 +61,6 @@ cc.Class({
         }else{
             this.node.y += delta.y;
         }
-        cc.log(this.node.y);
     },
     toucheEnd(event){
 
@@ -67,7 +68,7 @@ cc.Class({
     toucheCancel(event){
 
     },
-    
+
     start () {
 
     },

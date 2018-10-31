@@ -20,6 +20,7 @@ cc.Class({
             default: null,
             type: cc.Node
         },
+        heroRoot : cc.Node,
         bulletPrefab : cc.Prefab,
         bgTime : 3,
         x : 0,
@@ -33,6 +34,7 @@ cc.Class({
         //设置背景图的位置
         this.setBgPostion();
 
+        this.launchBullet();
     },
 
     setBgPostion(){
@@ -60,6 +62,29 @@ cc.Class({
         let seq = cc.sequence(backMove, cc.callFunc(this.backMoveEnd, this));
 
         target.runAction(seq);
+    },
+
+
+    //发射子弹
+    launchBullet(){
+        //每秒发射一个子弹
+        this.schedule(function(){
+            let bullet = cc.instantiate(this.bulletPrefab);
+
+            let bulletScript = require('heroBullet');
+
+            let bulletJs = bullet.getComponent(bulletScript);
+
+            //设置位置
+            let targetPos = cc.v2(this.hero.x, 1024);
+
+            bulletJs.launch(this.heroRoot.convertToNodeSpace(targetPos));
+            bullet.setPosition(this.hero.x, this.hero.y + 70);
+            //添加子弹
+            this.heroRoot.addChild(bullet);
+
+        }.bind(this), 0.5);
+
     },
 
     start () {
