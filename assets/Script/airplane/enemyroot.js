@@ -16,8 +16,8 @@ cc.Class({
         height : 542,
         // explosionPrefab : cc.Prefab,
         // canvas : cc.Node,
-        enemy : cc.Node,
-        explosion : cc.Node,
+        // enemy : cc.Node,
+        // explosion : cc.Node,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -62,18 +62,16 @@ cc.Class({
 
     onCollisionEnter: function (other, self) {
 
-        this.enemy = self.node.getChildByName('enemy');
 
-        this.explosion = self.node.getChildByName('explosion');
-        cc.log(this.explosion);
-        this.explosion.setPosition(this.enemy.x, this.enemy.y);
-        let explosionClip = this.explosion.getComponent(cc.Animation);
+        let sprite = self.node.getComponent(cc.Sprite);
+        sprite.spriteFrame = null;
+
+        let explosionClip = self.node.getComponent(cc.Animation);
         explosionClip.play();
 
         this.scheduleOnce(function () {
-            this.explosion.destroy();
-            this.enemy.destroy();
-        }.bind(this), 0.5);
+            self.node.destroy();
+        }.bind(self), 0.5);
 
     },
     start () {

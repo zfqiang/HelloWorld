@@ -45,8 +45,11 @@ cc.Class({
      * @param  {Collider} self  产生碰撞的自身的碰撞组件
      */
     onCollisionEnter: function (other, self) {
-        console.log('on hero enter');
-        //this.node.destroy();
+
+        //let manager = cc.ActionManager.pauseAllRunningActions();
+        // let canvas = self.node.parent.parent;
+        // cc.log(canvas);
+        // canvas.stopAllActions();
     },
 
     toucheStart(event){

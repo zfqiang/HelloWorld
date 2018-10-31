@@ -23,8 +23,8 @@ cc.Class({
         heroRoot : cc.Node,
         bulletPrefab : cc.Prefab,
         enemyPrefab : cc.Prefab,
-        explosionPrefab : cc.Prefab,
-        enemyRootPrefab : cc.Prefab,
+        // explosionPrefab : cc.Prefab,
+        // enemyRootPrefab : cc.Prefab,
         bgTime : 3,
         x : 0,
         y : 512,
@@ -98,7 +98,7 @@ cc.Class({
     ememyAttack(){
         //每秒发射一个子弹
         this.schedule(function(){
-            let enemy = cc.instantiate(this.enemyRootPrefab);
+            let enemy = cc.instantiate(this.enemyPrefab);
 
             //添加敌机
             this.heroRoot.addChild(enemy);
@@ -106,18 +106,18 @@ cc.Class({
         }.bind(this), 1);
     },
 
-    explosion(pos){
-        this.explosion = cc.instantiate(this.explosionPrefab);
-        this.explosion.setPosition(pos);
-        let explosionClip = this.explosion.getComponent(cc.Animation);
-        explosionClip.play();
-
-        this.heroRoot.addChild(this.explosion);
-
-        this.scheduleOnce(function () {
-            this.explosion.destroy();
-        }.bind(this), 0.5);
-    },
+    // explosion(pos){
+    //     this.explosion = cc.instantiate(this.explosionPrefab);
+    //     this.explosion.setPosition(pos);
+    //     let explosionClip = this.explosion.getComponent(cc.Animation);
+    //     explosionClip.play();
+    //
+    //     this.heroRoot.addChild(this.explosion);
+    //
+    //     this.scheduleOnce(function () {
+    //         this.explosion.destroy();
+    //     }.bind(this), 0.5);
+    // },
 
     start () {
 
