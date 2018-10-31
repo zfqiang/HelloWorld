@@ -24,6 +24,7 @@ cc.Class({
         bulletPrefab : cc.Prefab,
         enemyPrefab : cc.Prefab,
         explosionPrefab : cc.Prefab,
+        enemyRootPrefab : cc.Prefab,
         bgTime : 3,
         x : 0,
         y : 512,
@@ -42,26 +43,13 @@ cc.Class({
         //敌机来袭
         this.ememyAttack();
 
-        this.schedule(function () {
-            this.explosion = cc.instantiate(this.explosionPrefab);
-            this.explosion.setPosition(0, 0);
-            let explosionClip = this.explosion.getComponent(cc.Animation);
-            explosionClip.play();
-
-            this.node.addChild(this.explosion);
-
-            this.scheduleOnce(function () {
-                this.explosion.destroy();
-            }.bind(this), 0.5);
-        }.bind(this), 1);
-
     },
 
     setBgPostion(){
 
         //设置背景图移动坐标和重置坐标
         this.movePos = cc.v2(0, - this.y);
-        this.resetPos = cc.v2(0, this.y * 2 - 8);
+        this.resetPos = cc.v2(0, this.y * 2 - 10);
 
         for (let i = 0; i < this.bgList.length; i++){
             this.bgList[i].setPosition(this.x, this.y * i);
@@ -110,12 +98,25 @@ cc.Class({
     ememyAttack(){
         //每秒发射一个子弹
         this.schedule(function(){
-            let enemy = cc.instantiate(this.enemyPrefab);
+            let enemy = cc.instantiate(this.enemyRootPrefab);
 
             //添加敌机
             this.heroRoot.addChild(enemy);
 
         }.bind(this), 1);
+    },
+
+    explosion(pos){
+        this.explosion = cc.instantiate(this.explosionPrefab);
+        this.explosion.setPosition(pos);
+        let explosionClip = this.explosion.getComponent(cc.Animation);
+        explosionClip.play();
+
+        this.heroRoot.addChild(this.explosion);
+
+        this.scheduleOnce(function () {
+            this.explosion.destroy();
+        }.bind(this), 0.5);
     },
 
     start () {

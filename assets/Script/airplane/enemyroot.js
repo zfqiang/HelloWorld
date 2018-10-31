@@ -13,12 +13,21 @@ cc.Class({
 
     properties: {
         speed : 3,
-        height : 542
+        height : 542,
+        // explosionPrefab : cc.Prefab,
+        // canvas : cc.Node,
+        enemy : cc.Node,
+        explosion : cc.Node,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        this.manager = cc.director.getCollisionManager();
+        this.manager.enabled = true;
+        this.manager.enabledDebugDraw = true;
+
+
         let winSize = cc.winSize;
 
         this.winWidth = winSize.width;
@@ -45,15 +54,32 @@ cc.Class({
     },
 
     randomNumBoth(Min, Max){
-        var Range = Max - Min;
-        var Rand = Math.random();
-        var num = Min + Math.round(Rand * Range); //四舍五入
+        let Range = Max - Min;
+        let Rand = Math.random();
+        let num = Min + Math.round(Rand * Range); //四舍五入
         return num;
     },
 
+    onCollisionEnter: function (other, self) {
+
+        this.enemy = self.node.getChildByName('enemy');
+
+        this.explosion = self.node.getChildByName('explosion');
+        cc.log(this.explosion);
+        this.explosion.setPosition(this.enemy.x, this.enemy.y);
+        let explosionClip = this.explosion.getComponent(cc.Animation);
+        explosionClip.play();
+
+        this.scheduleOnce(function () {
+            this.explosion.destroy();
+            this.enemy.destroy();
+        }.bind(this), 0.5);
+
+    },
     start () {
 
     },
 
     // update (dt) {},
+
 });

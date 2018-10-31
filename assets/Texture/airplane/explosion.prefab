@@ -17,7 +17,7 @@
     "_parent": null,
     "_children": [],
     "_active": true,
-    "_level": 1,
+    "_level": 2,
     "_components": [
       {
         "__id__": 2
@@ -91,7 +91,7 @@
       }
     ],
     "playOnLoad": false,
-    "_id": "07GlYipd1Bd51M7/2Xa8AG"
+    "_id": "d0MKQooWlC3au4fE5BNuK3"
   },
   {
     "__type__": "cc.Sprite",
@@ -121,7 +121,7 @@
     "_atlas": {
       "__uuid__": "ba347d42-6553-4bce-a509-236b5bd96b06"
     },
-    "_id": "c2SSLSlk1Bd67F+zv3k4WT"
+    "_id": "beWh2Y+LJALrArm/usU+nH"
   },
   {
     "__type__": "cc.PrefabInfo",

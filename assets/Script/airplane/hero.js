@@ -18,6 +18,10 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        this.manager = cc.director.getCollisionManager();
+        this.manager.enabled = true;
+        this.manager.enabledDebugDraw = true;
+
         let winSize = cc.winSize;
 
         this.winWidth = winSize.width;
@@ -33,6 +37,16 @@ cc.Class({
         this.node.on(cc.Node.EventType.TOUCH_CANCEL, this.toucheCancel, this);
 
         //this.launchBullet();
+    },
+
+    /**
+     * 当碰撞产生的时候调用
+     * @param  {Collider} other 产生碰撞的另一个碰撞组件
+     * @param  {Collider} self  产生碰撞的自身的碰撞组件
+     */
+    onCollisionEnter: function (other, self) {
+        console.log('on hero enter');
+        //this.node.destroy();
     },
 
     toucheStart(event){

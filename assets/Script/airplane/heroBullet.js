@@ -18,7 +18,9 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-
+        this.manager = cc.director.getCollisionManager();
+        this.manager.enabled = true;
+        this.manager.enabledDebugDraw = true;
     },
 
     launch(targetPos){
@@ -32,6 +34,17 @@ cc.Class({
         this.node.runAction(seq);
     },
 
+    /**
+     * 当碰撞产生的时候调用
+     * @param  {Collider} other 产生碰撞的另一个碰撞组件
+     * @param  {Collider} self  产生碰撞的自身的碰撞组件
+     */
+    onCollisionEnter: function (other, self) {
+        //cc.log(other.world);
+
+
+        //this.node.destroy();
+    },
     start () {
 
     },

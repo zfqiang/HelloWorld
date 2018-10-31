@@ -17,17 +17,20 @@
     "_parent": null,
     "_children": [],
     "_active": true,
-    "_level": 2,
+    "_level": 1,
     "_components": [
       {
         "__id__": 2
       },
       {
         "__id__": 3
+      },
+      {
+        "__id__": 4
       }
     ],
     "_prefab": {
-      "__id__": 4
+      "__id__": 5
     },
     "_opacity": 255,
     "_color": {
@@ -49,8 +52,8 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 5,
-      "y": 556,
+      "x": 0,
+      "y": 0,
       "z": 0
     },
     "_scale": {
@@ -100,7 +103,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "e42ygKjfRLVrJAlk3pXACA"
+    "_id": "bfjAImtV1Db5kYZHSfROGV"
   },
   {
     "__type__": "c4bb35+Z0JG67YT+YyBNpm3",
@@ -112,7 +115,32 @@
     "_enabled": true,
     "speed": 3,
     "height": 542,
-    "_id": "ddobziW8xOg7uU8Rf9sryI"
+    "explosionPrefab": {
+      "__uuid__": "3a4c7980-6879-4b62-a00f-a13ea4048965"
+    },
+    "canvas": null,
+    "_id": "ee4CvW7EZPS4w9QgGi3cGL"
+  },
+  {
+    "__type__": "cc.BoxCollider",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "tag": 0,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 120,
+      "height": 79
+    },
+    "_id": "88jM9fn1hOtJCeNlSY63uT"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -120,9 +148,9 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "1a8c81ac-cee5-40fa-b88a-298c4610b7b6"
     },
-    "fileId": "84NneYM2xD0otj6YPpL2R8",
+    "fileId": "b5WtP5MAdAtL1MhJCoE8Tr",
     "sync": false
   }
 ]
