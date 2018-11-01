@@ -103,7 +103,6 @@ cc.Class({
     },
 
     resetBtn(){
-        cc.log(1111111);
         cc.director.resume();
         cc.director.loadScene('airplaneScene');
     },
