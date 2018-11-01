@@ -25,7 +25,7 @@ cc.Class({
     onLoad () {
         this.manager = cc.director.getCollisionManager();
         this.manager.enabled = true;
-        this.manager.enabledDebugDraw = true;
+        //this.manager.enabledDebugDraw = true;
 
 
         let winSize = cc.winSize;
@@ -62,18 +62,32 @@ cc.Class({
 
     onCollisionEnter: function (other, self) {
 
+        if(self.node.y <= 1024){
 
-        let sprite = self.node.getComponent(cc.Sprite);
-        sprite.spriteFrame = null;
+            let sprite = self.node.getComponent(cc.Sprite);
+            if(sprite.spriteFrame){
 
-        let explosionClip = self.node.getComponent(cc.Animation);
-        explosionClip.play();
+                sprite.spriteFrame = null;
 
-        this.scheduleOnce(function () {
-            self.node.destroy();
-        }.bind(self), 0.5);
+                let explosionClip = self.node.getComponent(cc.Animation);
+                explosionClip.play();
+
+                this.scheduleOnce(function () {
+                    self.node.destroy();
+                }.bind(self), 0.5);
+
+
+                let heroroot = self.node.parent;
+                let score = heroroot.getChildByName('score');
+                let sco = score.getComponent(cc.Label);
+
+                sco.string = parseInt(sco.string) + 1;
+            }
+        }
 
     },
+
+
     start () {
 
     },

@@ -20,7 +20,7 @@ cc.Class({
     onLoad () {
         this.manager = cc.director.getCollisionManager();
         this.manager.enabled = true;
-        this.manager.enabledDebugDraw = true;
+        //this.manager.enabledDebugDraw = true;
     },
 
     launch(targetPos){

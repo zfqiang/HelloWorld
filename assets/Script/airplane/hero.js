@@ -20,7 +20,7 @@ cc.Class({
     onLoad () {
         this.manager = cc.director.getCollisionManager();
         this.manager.enabled = true;
-        this.manager.enabledDebugDraw = true;
+        //this.manager.enabledDebugDraw = true;
 
         let winSize = cc.winSize;
 
@@ -36,7 +36,6 @@ cc.Class({
         this.node.on(cc.Node.EventType.TOUCH_END, this.toucheEnd, this);
         this.node.on(cc.Node.EventType.TOUCH_CANCEL, this.toucheCancel, this);
 
-        //this.launchBullet();
     },
 
     /**
@@ -45,25 +44,9 @@ cc.Class({
      * @param  {Collider} self  产生碰撞的自身的碰撞组件
      */
     onCollisionEnter: function (other, self) {
-
         let hroot = self.node.parent;
         hroot.getChildByName('alert').active = true;
-
-        hroot.enabled = false;
-
-        // self.stopAllActions();
-
-        hroot.stopAllActions();
-
-        // let children = hroot.children;
-        // for (var i = 0; i < children.length; ++i) {
-        //     children[i].stopAllActions();
-        // }
-
-        //let manager = cc.ActionManager.pauseAllRunningActions();
-        let canvas = self.node.parent.parent;
-        // cc.log(canvas);
-        canvas.stopAllActions();
+        cc.director.pause();
     },
 
     toucheStart(event){

@@ -38,10 +38,10 @@ cc.Class({
         this.setBgPostion();
 
         //发射子弹
-        this.launchBullet();
+        this.schedule(this.launchBullet.bind(this), 1);
 
         //敌机来袭
-        this.ememyAttack();
+        this.schedule(this.ememyAttack.bind(this), 1);
 
     },
 
@@ -76,38 +76,36 @@ cc.Class({
     //发射子弹
     launchBullet(){
         //每秒发射一个子弹
-        this.schedule(function(){
-            let bullet = cc.instantiate(this.bulletPrefab);
+        let bullet = cc.instantiate(this.bulletPrefab);
 
-            let bulletScript = require('heroBullet');
+        let bulletScript = require('heroBullet');
 
-            let bulletJs = bullet.getComponent(bulletScript);
+        let bulletJs = bullet.getComponent(bulletScript);
 
-            //设置位置
-            let targetPos = cc.v2(this.hero.x, 1024);
+        //设置位置
+        let targetPos = cc.v2(this.hero.x, 1024);
 
-            bulletJs.launch(this.heroRoot.convertToNodeSpace(targetPos));
-            bullet.setPosition(this.hero.x, this.hero.y + 70);
-            //添加子弹
-            this.heroRoot.addChild(bullet);
+        bulletJs.launch(this.heroRoot.convertToNodeSpace(targetPos));
+        bullet.setPosition(this.hero.x, this.hero.y + 70);
+        //添加子弹
+        this.heroRoot.addChild(bullet);
 
-        }.bind(this), 0.5);
 
     },
 
     ememyAttack(){
         //每秒发射一个子弹
-        this.schedule(function(){
-            let enemy = cc.instantiate(this.enemyPrefab);
+        let enemy = cc.instantiate(this.enemyPrefab);
 
-            //添加敌机
-            this.heroRoot.addChild(enemy);
+        //添加敌机
+        this.heroRoot.addChild(enemy);
 
-        }.bind(this), 1);
     },
 
     resetBtn(){
         cc.log(1111111);
+        cc.director.resume();
+        cc.director.loadScene('airplaneScene');
     },
 
     start () {
