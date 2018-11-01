@@ -106,18 +106,9 @@ cc.Class({
         }.bind(this), 1);
     },
 
-    // explosion(pos){
-    //     this.explosion = cc.instantiate(this.explosionPrefab);
-    //     this.explosion.setPosition(pos);
-    //     let explosionClip = this.explosion.getComponent(cc.Animation);
-    //     explosionClip.play();
-    //
-    //     this.heroRoot.addChild(this.explosion);
-    //
-    //     this.scheduleOnce(function () {
-    //         this.explosion.destroy();
-    //     }.bind(this), 0.5);
-    // },
+    resetBtn(){
+        cc.log(1111111);
+    },
 
     start () {
 

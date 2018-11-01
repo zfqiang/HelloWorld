@@ -46,10 +46,24 @@ cc.Class({
      */
     onCollisionEnter: function (other, self) {
 
+        let hroot = self.node.parent;
+        hroot.getChildByName('alert').active = true;
+
+        hroot.enabled = false;
+
+        // self.stopAllActions();
+
+        hroot.stopAllActions();
+
+        // let children = hroot.children;
+        // for (var i = 0; i < children.length; ++i) {
+        //     children[i].stopAllActions();
+        // }
+
         //let manager = cc.ActionManager.pauseAllRunningActions();
-        // let canvas = self.node.parent.parent;
+        let canvas = self.node.parent.parent;
         // cc.log(canvas);
-        // canvas.stopAllActions();
+        canvas.stopAllActions();
     },
 
     toucheStart(event){
